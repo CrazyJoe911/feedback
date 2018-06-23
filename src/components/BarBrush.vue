@@ -51,7 +51,7 @@ export default {
   async mounted () {
     await this.refreshBarBrush()
 
-    var xAxisData = []
+    var xAxisData = ['CD', 'FP', 'OLE', 'TWI']
     var data1 = []
     var data2 = []
     var data3 = []
@@ -81,7 +81,7 @@ export default {
     let option = {
       backgroundColor: '#eee',
       legend: {
-        data: ['bar', 'bar2', 'bar3', 'bar4', 'bar5'],
+        data: ['1 Star', '2 Stars', '3 Stars', '4 Stars', '5 Stars'],
         align: 'left',
         left: 10
       },
@@ -95,7 +95,7 @@ export default {
       tooltip: {},
       xAxis: {
         data: xAxisData,
-        name: 'X Axis',
+        name: 'Tenants',
         silent: false,
         axisLine: { onZero: true },
         splitLine: { show: false },
@@ -104,42 +104,44 @@ export default {
       yAxis: {
         inverse: false,
         splitArea: { show: false },
-        max: 6
+        max: 10
       },
       grid: {
-        left: 100
+        top: 50,
+        left: 100,
+        right: 100
       },
       series: [
         {
-          name: 'bar',
+          name: '1 Star',
           type: 'bar',
           stack: 'one',
           itemStyle: itemStyle,
           data: data1
         },
         {
-          name: 'bar2',
+          name: '2 Stars',
           type: 'bar',
           stack: 'one',
           itemStyle: itemStyle,
           data: data2
         },
         {
-          name: 'bar3',
+          name: '3 Stars',
           type: 'bar',
           stack: 'one',
           itemStyle: itemStyle,
           data: data3
         },
         {
-          name: 'bar4',
+          name: '4 Stars',
           type: 'bar',
           stack: 'one',
           itemStyle: itemStyle,
           data: data4
         },
         {
-          name: 'bar5',
+          name: '5 Stars',
           type: 'bar',
           stack: 'one',
           itemStyle: itemStyle,
