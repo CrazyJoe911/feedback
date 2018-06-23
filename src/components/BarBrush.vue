@@ -13,7 +13,8 @@ export default {
       tenantEmails: [
         '373382617@qq.com',
         'zhugino@gmail.com',
-        'epam.propertymanagement@gmail.com'
+        'epam.propertymanagement@gmail.com',
+        'yizhou.zhu@outlook.com'
       ]
     }
   },
@@ -138,7 +139,7 @@ export default {
         {
           name: 'bar4',
           type: 'bar',
-          stack: 'two',
+          stack: 'one',
           itemStyle: itemStyle,
           data: data4
         },

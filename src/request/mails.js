@@ -58,6 +58,7 @@ async function getParsedMessages () {
         content: message.content,
         star: message.star,
         person: message.person,
+        keywords: message.keywords,
         time: new Date(message.time)
       }
     )
@@ -65,7 +66,7 @@ async function getParsedMessages () {
   Object.values(result).forEach(floor => {
     Object.values(floor).forEach(tenant => {
       tenant.averageStar =
-        (tenant.messages.reduce((total, rec) => total + rec.star, 0))/(tenant.messages.length || 1)
+        (tenant.messages.reduce((total, rec) => total + rec.star, 0)) / (tenant.messages.length || 1)
     })
   })
   return result
