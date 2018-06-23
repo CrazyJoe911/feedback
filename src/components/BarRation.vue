@@ -1,5 +1,5 @@
 <template>
-  <div id='pie' style="width: 100%; height: 100%;"></div>
+  <div id='bar-ration' style="width: 100%; height: 100%;"></div>
 </template>
 
 <script>

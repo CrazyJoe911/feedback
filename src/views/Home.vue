@@ -14,8 +14,8 @@
     </div>
     <div class='charts'>
       <BarBrush class='chart'/>
-      <!-- <Pie class='chart'/>
-      <LineStack class='chart'/> -->
+      <Pie class='chart'/>
+      <LineStack class='chart'/>
     </div>
   </div>
 </template>
@@ -25,6 +25,7 @@ import FeedbackList from './FeedbackList'
 import BarBrush from '../components/BarBrush'
 import Pie from '../components/Pie'
 import LineStack from '../components/LineStack'
+import * as mailsRequest from '../request/mails'
 
 export default {
   name: 'Home',
@@ -217,6 +218,10 @@ export default {
     getActiveTenant (tenant) {
       this.activeTenant = [tenant.name]
     }
+  },
+  async mounted () {
+    const result = await mailsRequest.getParsedMessages()
+    console.log(result)
   }
 }
 </script>
