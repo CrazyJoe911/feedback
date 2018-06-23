@@ -55,6 +55,7 @@ async function getParsedMessages () {
     }
     result[message.floor][message.unit].messages.push(
       {
+        id: message._id,
         content: message.content,
         star: message.star,
         person: message.person,

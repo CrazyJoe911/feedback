@@ -77,9 +77,7 @@ export default {
         containLabel: true
       },
       toolbox: {
-        feature: {
-          saveAsImage: {}
-        }
+        feature: { }
       },
       xAxis: {
         type: 'category',

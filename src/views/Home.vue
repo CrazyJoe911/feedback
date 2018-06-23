@@ -68,7 +68,7 @@ export default {
     const result = await mailsRequest.getParsedMessages()
     const formatData = []
 
-    for(let floor in result) {
+    for (let floor in result) {
       const floorInfo = result[floor]
       const tenants = []
       for (let tenant in floorInfo) {
