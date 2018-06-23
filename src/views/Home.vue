@@ -40,162 +40,163 @@ export default {
     return {
       activeFloorIndex: -1,
       activeTenant: [],
-      buildingData: [{
-        floorNumber: '3F',
-        tenants: [{
-          name: 'pacific coffee',
-          icon: 'logo301',
-          faceScores: 3,
-          persons: [{
-            name: 'Jim',
-            icon: 'logo301',
-            scores: 5,
-            sentTime: '2016-10-1',
-            read: false,
-            message: 'sljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjald'
-          }, {
-            name: 'Kitty',
-            scores: 3.3,
-            message: 'lasjdlajdlajda'
-          }]}, {
-          name: 'pacific coffee2',
-          icon: 'logo302',
-          faceScores: 3.4,
+      buildingData: []
+      // buildingData: [{
+      //   floorNumber: '3F',
+      //   tenants: [{
+      //     name: 'pacific coffee',
+      //     icon: 'logo301',
+      //     faceScores: 3,
+      //     persons: [{
+      //       name: 'Jim',
+      //       icon: 'logo301',
+      //       scores: 5,
+      //       sentTime: '2016-10-1',
+      //       read: false,
+      //       message: 'sljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjald'
+      //     }, {
+      //       name: 'Kitty',
+      //       scores: 3.3,
+      //       message: 'lasjdlajdlajda'
+      //     }]}, {
+      //     name: 'pacific coffee2',
+      //     icon: 'logo302',
+      //     faceScores: 3.4,
 
-          persons: [{
-            name: 'Jim',
-            icon: 'logo302',
-            scores: 1.2,
-            sentTime: '2016-10-1',
-            message: 'sljadlkajdljaldjald'
-          }, {
-            name: 'Kitty',
-            scores: 2.3,
-            message: 'lasjdlajdlajda',
-            sentTime: '2016-10-1'
-          }]}, {
-          name: 'pacific coffee3',
-          icon: 'logo303',
-          persons: [{
-            name: 'Jim',
-            icon: 'logo303',
-            scores: 2.3,
-            sentTime: '2016-10-1',
-            message: 'sljadlkajdljaldjald'
-          }, {
-            name: 'Kitty',
-            scores: 2.3,
-            message: 'lasjdlajdlajda'
-          }]
-        }, {
-          name: 'pacific coffee4',
-          icon: 'logo304',
-          persons: [{
-            name: 'Jim',
-            icon: 'logo304',
-            scores: 4.5,
-            sentTime: '2016-10-1',
-            message: 'sljadlkajdljaldjald'
-          }, {
-            name: 'Kitty',
-            scores: 3.5,
-            icon: 'logo304',
-            message: 'lasjdlajdlajda'
-          }]
-        }]},
-      {
-        floorNumber: '2F',
-        tenants: [{
-          name: '201',
-          icon: 'logo201',
-          faceScores: 3,
-          persons: [{
-            name: 'Jim',
-            icon: 'logo301',
-            scores: 5,
-            sentTime: '2016-10-1',
-            message: 'sljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjald'
-          }, {
-            name: 'Kitty',
-            scores: 3.3,
-            message: 'lasjdlajdlajda'
-          }]}, {
-          name: '202',
-          icon: 'logo202',
-          persons: [{
-            name: 'Jim',
-            icon: 'logo302',
-            scores: 1.2,
-            sentTime: '2016-10-1',
-            message: 'sljadlkajdljaldjald'
-          }, {
-            name: 'Kitty',
-            scores: 2.3,
-            message: 'lasjdlajdlajda',
-            sentTime: '2016-10-1'
-          }]}, {
-          name: 'pacific coffee4',
-          icon: 'logo204',
-          persons: [{
-            name: 'Jim',
-            icon: 'logo204',
-            scores: 4.5,
-            sentTime: '2016-10-1',
-            message: 'sljadlkajdljaldjald'
-          }, {
-            name: 'Kitty',
-            scores: 3.5,
-            icon: 'logo204',
-            message: 'lasjdlajdlajda'
-          }]
-        }]}, {
-        floorNumber: '1F',
-        tenants: [{
-          name: '101',
-          icon: 'logo101',
-          faceScores: 1,
-          persons: [{
-            name: 'Jim',
-            icon: 'logo101',
-            scores: 5,
-            sentTime: '2016-10-1',
-            message: 'sljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjald'
-          }, {
-            name: 'Kitty',
-            scores: 3.3,
-            message: 'lasjdlajdlajda'
-          }]}, {
-          name: '102',
-          icon: 'logo102',
-          faceScores: 2,
-          persons: [{
-            name: 'Jim',
-            icon: 'logo302',
-            scores: 1.2,
-            sentTime: '2016-10-1',
-            message: 'sljadlkajdljaldjald'
-          }, {
-            name: 'Kitty',
-            scores: 2.3,
-            message: 'lasjdlajdlajda',
-            sentTime: '2016-10-1'
-          }]}, {
-          name: '103',
-          icon: 'logo103',
-          faceScores: 2,
-          persons: [{
-            name: 'Jim',
-            icon: 'logo303',
-            scores: 2.3,
-            sentTime: '2016-10-1',
-            message: 'sljadlkajdljaldjald'
-          }, {
-            name: 'Kitty',
-            scores: 2.3,
-            message: 'lasjdlajdlajda'
-          }]
-        }]}
-      ]
+      //     persons: [{
+      //       name: 'Jim',
+      //       icon: 'logo302',
+      //       scores: 1.2,
+      //       sentTime: '2016-10-1',
+      //       message: 'sljadlkajdljaldjald'
+      //     }, {
+      //       name: 'Kitty',
+      //       scores: 2.3,
+      //       message: 'lasjdlajdlajda',
+      //       sentTime: '2016-10-1'
+      //     }]}, {
+      //     name: 'pacific coffee3',
+      //     icon: 'logo303',
+      //     persons: [{
+      //       name: 'Jim',
+      //       icon: 'logo303',
+      //       scores: 2.3,
+      //       sentTime: '2016-10-1',
+      //       message: 'sljadlkajdljaldjald'
+      //     }, {
+      //       name: 'Kitty',
+      //       scores: 2.3,
+      //       message: 'lasjdlajdlajda'
+      //     }]
+      //   }, {
+      //     name: 'pacific coffee4',
+      //     icon: 'logo304',
+      //     persons: [{
+      //       name: 'Jim',
+      //       icon: 'logo304',
+      //       scores: 4.5,
+      //       sentTime: '2016-10-1',
+      //       message: 'sljadlkajdljaldjald'
+      //     }, {
+      //       name: 'Kitty',
+      //       scores: 3.5,
+      //       icon: 'logo304',
+      //       message: 'lasjdlajdlajda'
+      //     }]
+      //   }]},
+      // {
+      //   floorNumber: '2F',
+      //   tenants: [{
+      //     name: '201',
+      //     icon: 'logo201',
+      //     faceScores: 3,
+      //     persons: [{
+      //       name: 'Jim',
+      //       icon: 'logo301',
+      //       scores: 5,
+      //       sentTime: '2016-10-1',
+      //       message: 'sljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjald'
+      //     }, {
+      //       name: 'Kitty',
+      //       scores: 3.3,
+      //       message: 'lasjdlajdlajda'
+      //     }]}, {
+      //     name: '202',
+      //     icon: 'logo202',
+      //     persons: [{
+      //       name: 'Jim',
+      //       icon: 'logo302',
+      //       scores: 1.2,
+      //       sentTime: '2016-10-1',
+      //       message: 'sljadlkajdljaldjald'
+      //     }, {
+      //       name: 'Kitty',
+      //       scores: 2.3,
+      //       message: 'lasjdlajdlajda',
+      //       sentTime: '2016-10-1'
+      //     }]}, {
+      //     name: 'pacific coffee4',
+      //     icon: 'logo204',
+      //     persons: [{
+      //       name: 'Jim',
+      //       icon: 'logo204',
+      //       scores: 4.5,
+      //       sentTime: '2016-10-1',
+      //       message: 'sljadlkajdljaldjald'
+      //     }, {
+      //       name: 'Kitty',
+      //       scores: 3.5,
+      //       icon: 'logo204',
+      //       message: 'lasjdlajdlajda'
+      //     }]
+      //   }]}, {
+      //   floorNumber: '1F',
+      //   tenants: [{
+      //     name: '101',
+      //     icon: 'logo101',
+      //     faceScores: 1,
+      //     persons: [{
+      //       name: 'Jim',
+      //       icon: 'logo101',
+      //       scores: 5,
+      //       sentTime: '2016-10-1',
+      //       message: 'sljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjaldsljadlkaj dljaldjald'
+      //     }, {
+      //       name: 'Kitty',
+      //       scores: 3.3,
+      //       message: 'lasjdlajdlajda'
+      //     }]}, {
+      //     name: '102',
+      //     icon: 'logo102',
+      //     faceScores: 2,
+      //     persons: [{
+      //       name: 'Jim',
+      //       icon: 'logo302',
+      //       scores: 1.2,
+      //       sentTime: '2016-10-1',
+      //       message: 'sljadlkajdljaldjald'
+      //     }, {
+      //       name: 'Kitty',
+      //       scores: 2.3,
+      //       message: 'lasjdlajdlajda',
+      //       sentTime: '2016-10-1'
+      //     }]}, {
+      //     name: '103',
+      //     icon: 'logo103',
+      //     faceScores: 2,
+      //     persons: [{
+      //       name: 'Jim',
+      //       icon: 'logo303',
+      //       scores: 2.3,
+      //       sentTime: '2016-10-1',
+      //       message: 'sljadlkajdljaldjald'
+      //     }, {
+      //       name: 'Kitty',
+      //       scores: 2.3,
+      //       message: 'lasjdlajdlajda'
+      //     }]
+      //   }]}
+      // ]
     }
   },
   computed: {
@@ -221,7 +222,26 @@ export default {
   },
   async mounted () {
     const result = await mailsRequest.getParsedMessages()
-    console.log(result)
+    const formatData = []
+
+    for(let floor in result) {
+      const floorInfo = result[floor]
+      const tenants = []
+      for (let tenant in floorInfo) {
+        tenants.push({
+          tenantNumber: tenant,
+          ...floorInfo[tenant]
+        })
+      }
+      formatData.push({
+        name: floor,
+        floorNumber: floor,
+        tenants
+      })
+    }
+
+    console.log(formatData)
+    this.buildingData = formatData.reverse()
   }
 }
 </script>
@@ -255,7 +275,7 @@ export default {
   }
   .feedbacklist-overview {
     overflow: auto;
-    padding: 0 20px;
+    padding-left: 20px;
 
     p.title {
       margin: 0;
@@ -275,6 +295,8 @@ export default {
     display: flex;
     .chart {
       flex: 1;
+      margin: 10px;
+      box-sizing: border-box;
     }
   }
 }

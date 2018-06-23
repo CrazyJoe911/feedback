@@ -2,38 +2,38 @@
   <div class='feedback-list'>
     <div class='floorNumber'>
       <span class='showAll' @click="resetActiveTenant">
-        {{ floorData && floorData.floorNumber }}
+        {{ floorData && floorData.name }}
       </span>
     </div>
     <el-collapse v-model="activeNames" @change="handleChange">
       <el-collapse-item v-for="tenant in floorData.tenants"
         :name="tenant.name"
-        :key="tenant.name"
+        :key="tenant.name + tenant.tenantNumber"
         v-show="showTenant(tenant)"
       >
         <div slot='title' class='tenant-title'>
-          <span :class="['icon', `${tenant.icon}`]"></span>
+          <span :class="['icon', `logo${tenant.tenantNumber}`]"></span>
           <span class='name'>{{tenant.name}}</span>
-          <span :class="['face', getFaceIcon(tenant.faceScores || 5)]"></span>
+          <span :class="['face', getFaceIcon(tenant.averageStar || 5)]"></span>
         </div>
-        <div :class="['person-info']" v-for="(person, index ) in tenant.persons"
-          :key="person.name + index"
-          @click="readMessage(person)"
+        <div :class="['message-info']" v-for="(message, index ) in tenant.messages"
+          :key="message.person + index"
+          @click="readMessage(message)"
         >
           <div class='profile'>
-            <span :class="['avatar', `${person.icon}`]">
-              <i v-if="person.read===false" class='unread'/>
+            <span :class="['avatar', `${message.person}`]">
+              <i v-if="message.read===false" class='unread'/>
             </span>
             <span class='name'>
                   <span class='sentby'>
-                    {{person.name}}
+                    {{message.person}}
                   </span>
-            <i class='sentTime'>
-                    {{formatDate(person.sentTime)}}
+            <i class='time'>
+                    {{formatDate(message.time)}}
                   </i>
             </span>
             <span class='rate'>
-                  <RatePanel :scores="person.scores"/>
+                  <RatePanel :scores="message.star"/>
                 </span>
           </div>
           <div class='message'>
@@ -41,7 +41,7 @@
                   <span class='small'></span>
             <span class='big'></span>
             </span>
-            <span class='message-content'>{{ person.message }}</span>
+            <span class='message-content'>{{ message.content }}</span>
           </div>
         </div>
       </el-collapse-item>
@@ -76,7 +76,7 @@ export default {
   },
   methods: {
     changeRate (val, index) {
-      this.persons.splice(index, 1, val)
+      this.messages.splice(index, 1, val)
     },
     handleChange (val) {
     },
@@ -102,8 +102,8 @@ export default {
     resetActiveTenant () {
       this.activeNames = []
     },
-    readMessage (person) {
-      person.read = true
+    readMessage (message) {
+      message.read = true
     }
   },
   watch: {
@@ -192,7 +192,7 @@ export default {
       position: absolute;
       right: 0;
     }
-    .person-info {
+    .message-info {
       cursor: pointer;
       .message {
         display: flex;
@@ -227,17 +227,19 @@ export default {
           display: inline-block;
           flex: 1;
           background: #DFF2F4;
+          text-align: left;
         }
       }
     }
-    .person-info {
-      $person-height: 50px;
+    .message-info {
+      $message-height: 50px;
       $avatar-size: 40px;
+      padding-right: 10px;
       .profile {
-        height: $person-height;
+        height: $message-height;
         display: flex;
-        line-height: $person-height;
-        padding: 5px 0 5px 20px;
+        line-height: $message-height;
+        padding: 5px 0 0 20px;
         align-items: center;
       }
       .avatar,
@@ -249,6 +251,8 @@ export default {
         position: relative;
         height: $avatar-size;
         width: $avatar-size;
+        top: -5px;
+        right: 5px;
       }
       .name {
         flex: 1;
@@ -257,12 +261,12 @@ export default {
         font-weight: bold;
         margin-left: 15px;
         .sentby,
-        .sentTime {
+        .time {
           height: 20px;
           line-height: 20px;
           display: block;
         }
-        .sentTime {
+        .time {
           font-weight: normal;
           font-size: 12px;
         }

@@ -6,12 +6,12 @@
         <div v-for="(floor, index) in floorsData"
           v-show="choosedIndex === -1 || choosedIndex === parseInt(floor.floorNumber)" :class="[`floor${parseInt(floor.floorNumber)}`, imgAnimationCls(parseInt(floor.floorNumber))]"
           :style="getStyle(index, floor)"
-          :key="index + 'floors'"
+          :key="index + 'floors' + floor.name"
           @click="chooseImg(floor.floorNumber)"
           >
           <div v-show="choosedIndex !== -1"
             v-for="tenant in floor.tenants"
-            :class="[tenant.icon, 'inside-logo', {'logo-shark': hasUnreadMessage(tenant)}]" :key="tenant.name"
+            :class="['logo' + tenant.tenantNumber, 'inside-logo', {'logo-shark': hasUnreadMessage(tenant)}]" :key="tenant.name + tenant.tenantNumber"
             @click.stop="chooseTenant(tenant)"
           />
         </div>
@@ -73,11 +73,11 @@ export default {
     },
     hasUnreadMessage (tenant) {
       let unread = false
-      tenant.persons.map(person => {
-        if (person.read === false) {
-          unread = true
-        }
-      })
+      // tenant.messages.map(message => {
+      //   if (message.read === false) {
+      //     unread = true
+      //   }
+      // })
       return unread
     }
   }
