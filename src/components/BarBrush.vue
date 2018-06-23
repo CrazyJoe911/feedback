@@ -1,0 +1,185 @@
+<template>
+  <div id='line-stack' style="width: 100%; height: 100%;"></div>
+</template>
+
+<script>
+import * as mailsRequest from '../request/mails'
+import echarts from 'echarts'
+
+export default {
+  name: 'BarBrush',
+  data () {
+    return {
+      tenantEmails: [
+        '373382617@qq.com',
+        'zhugino@gmail.com',
+        'epam.propertymanagement@gmail.com'
+      ]
+    }
+  },
+  methods: {
+    async refreshBarBrush () {
+      this.tenantSentiments = await mailsRequest.getBarBrushData(
+        this.tenantEmails
+      )
+    },
+    renderBrushed (params) {
+      var brushed = []
+      var brushComponent = params.batch[0]
+
+      for (var sIdx = 0; sIdx < brushComponent.selected.length; sIdx++) {
+        var rawIndices = brushComponent.selected[sIdx].dataIndex
+        brushed.push('[Series ' + sIdx + '] ' + rawIndices.join(', '))
+      }
+
+      this.myChart.setOption({
+        title: {
+          backgroundColor: '#333',
+          text: 'SELECTED DATA INDICES: \n' + brushed.join('\n'),
+          bottom: 0,
+          right: 0,
+          width: 100,
+          textStyle: {
+            fontSize: 12,
+            color: '#fff'
+          }
+        }
+      })
+    }
+  },
+  async mounted () {
+    await this.refreshBarBrush()
+
+    var xAxisData = []
+    var data1 = []
+    var data2 = []
+    var data3 = []
+    var data4 = []
+    var data5 = []
+
+    this.tenantSentiments.map(tsRec => {
+      data1.push(tsRec.sentiments[0])
+      data2.push(tsRec.sentiments[1])
+      data3.push(tsRec.sentiments[2])
+      data4.push(tsRec.sentiments[3])
+      data5.push(tsRec.sentiments[4])
+    })
+
+    var itemStyle = {
+      normal: {
+      },
+      emphasis: {
+        barBorderWidth: 1,
+        shadowBlur: 10,
+        shadowOffsetX: 0,
+        shadowOffsetY: 0,
+        shadowColor: 'rgba(0,0,0,0.5)'
+      }
+    }
+
+    let option = {
+      backgroundColor: '#eee',
+      legend: {
+        data: ['bar', 'bar2', 'bar3', 'bar4', 'bar5'],
+        align: 'left',
+        left: 10
+      },
+      brush: {
+        toolbox: ['rect', 'polygon', 'lineX', 'lineY', 'keep', 'clear'],
+        xAxisIndex: 0
+      },
+      toolbox: {
+        feature: {
+          magicType: {
+            type: ['stack', 'tiled']
+          },
+          dataView: {}
+        }
+      },
+      tooltip: {},
+      xAxis: {
+        data: xAxisData,
+        name: 'X Axis',
+        silent: false,
+        axisLine: { onZero: true },
+        splitLine: { show: false },
+        splitArea: { show: false }
+      },
+      yAxis: {
+        inverse: false,
+        splitArea: { show: false },
+        max: 6
+      },
+      grid: {
+        left: 100
+      },
+      visualMap: {
+        type: 'continuous',
+        dimension: 1,
+        text: ['High', 'Low'],
+        inverse: true,
+        itemHeight: 200,
+        calculable: true,
+        min: -2,
+        max: 10,
+        top: 60,
+        left: 10,
+        inRange: {
+          colorLightness: [0.4, 0.8]
+        },
+        outOfRange: {
+          color: '#bbb'
+        },
+        controller: {
+          inRange: {
+            color: '#2f4554'
+          }
+        }
+      },
+      series: [
+        {
+          name: 'bar',
+          type: 'bar',
+          stack: 'one',
+          itemStyle: itemStyle,
+          data: data1
+        },
+        {
+          name: 'bar2',
+          type: 'bar',
+          stack: 'one',
+          itemStyle: itemStyle,
+          data: data2
+        },
+        {
+          name: 'bar3',
+          type: 'bar',
+          stack: 'one',
+          itemStyle: itemStyle,
+          data: data3
+        },
+        {
+          name: 'bar4',
+          type: 'bar',
+          stack: 'two',
+          itemStyle: itemStyle,
+          data: data4
+        },
+        {
+          name: 'bar5',
+          type: 'bar',
+          stack: 'one',
+          itemStyle: itemStyle,
+          data: data5
+        }
+      ]
+    }
+
+    // 基于准备好的dom，初始化echarts实例
+    this.myChart = echarts.init(document.getElementById('line-stack'))
+    this.myChart.on('brushSelected', this.renderBrushed)
+    // 绘制图表
+    this.myChart.setOption(option)
+  }
+}
+</script>
