@@ -3,7 +3,7 @@
     <div class='header'>Exchange Square</div>
     <div class='content'>
       <div class='building-overview'>
-        <BuildingInfo :activeFloorIndex="getActiveFloorIndex" :floorsData="activeFloorData" 
+        <BuildingInfo :activeFloorIndex="getActiveFloorIndex" :floorsData="activeFloorData"
           :getActiveTenant="getActiveTenant" :timestamp="timestamp"/>
       </div>
       <div class='feedbacklist-overview'>
@@ -43,7 +43,7 @@ export default {
       activeFloorIndex: -1,
       activeTenant: [],
       buildingData: [],
-      timestamp: new Date
+      timestamp: new Date()
     }
   },
   computed: {
@@ -66,11 +66,11 @@ export default {
     getActiveTenant (tenant) {
       this.activeTenant = [tenant.name]
     },
-    async getAllMessages() {
+    async getAllMessages () {
       const result = await mailsRequest.getParsedMessages()
-      return this.formatData(result)
+      this.buildingData = this.formatData(result)
     },
-    formatData(result) {
+    formatData (result) {
       const formatData = []
       for (let floor in result) {
         const floorInfo = result[floor]
@@ -89,15 +89,15 @@ export default {
       }
       return formatData.reverse()
     },
-    refreshPage() {
+    refreshPage () {
       this.timestamp = new Date()
     }
   },
   async mounted () {
-    this.buildingData = await this.getAllMessages()
-    // setInterval(() => {
-    //   this.getAllMessages()
-    // }, 3000)
+    await this.getAllMessages()
+    setInterval(() => {
+      this.getAllMessages()
+    }, 3000)
   }
 }
 </script>
@@ -116,7 +116,7 @@ export default {
   .content {
     box-sizing: border-box;
     padding: 30px 20px;
-    height: calc(100% - 40px);
+    height: calc(100% - 260px);
     display: flex;
     .building-overview {
       flex: 3;

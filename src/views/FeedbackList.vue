@@ -121,15 +121,15 @@ export default {
         this.$forceUpdate()
       }
     },
-    highlight(words, keys) {
+    highlight (words, keys) {
       let newstr = words
       keys.map(key => {
-        const reg = new RegExp("(" + key.name + ")", "g"); 
+        const reg = new RegExp('(' + key.name + ')', 'g')
         newstr = newstr.replace(reg, `<span class=${fontColorsCls[Math.floor(Math.random() * 5)]}>$1</span>`)
       })
       return newstr
     },
-    isRead(message) {
+    isRead (message) {
       const readKeys = JSON.parse(localStorage.getItem('ALREADY_READ_KEY'))
       return !readKeys.includes(message.id)
     }

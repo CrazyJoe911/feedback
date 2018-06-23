@@ -37,7 +37,7 @@ export default {
       default: () => {}
     },
     timestamp: {
-      type: [Date,String],
+      type: [Date, String],
       default: ''
     }
   },
@@ -47,7 +47,7 @@ export default {
     })
   },
   watch: {
-    timestamp() {
+    timestamp () {
       this.$forceUpdate()
     }
   },
@@ -56,7 +56,7 @@ export default {
       const calcIndex = index
       return {
         zIndex: parseInt(floor.floorNumber),
-        marginTop: calcIndex * 100 + 'px'
+        marginTop: calcIndex * 130 + 'px'
       }
     },
     chooseImg (floorNumber) {
@@ -139,7 +139,7 @@ export default {
       }
       .choosed {
         height: 500px;
-        margin: 0px !important;
+        margin: 50px !important;
         display: flex;
         align-items: center;
         &:hover {
