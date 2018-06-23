@@ -35,12 +35,21 @@ export default {
     getActiveTenant: {
       type: Function,
       default: () => {}
+    },
+    timestamp: {
+      type: [Date,String],
+      default: ''
     }
   },
   data () {
     return ({
       choosedIndex: -1
     })
+  },
+  watch: {
+    timestamp() {
+      this.$forceUpdate()
+    }
   },
   methods: {
     getStyle (index, floor) {
@@ -73,11 +82,13 @@ export default {
     },
     hasUnreadMessage (tenant) {
       let unread = false
-      // tenant.messages.map(message => {
-      //   if (message.read === false) {
-      //     unread = true
-      //   }
-      // })
+      const readKeys = JSON.parse(localStorage.getItem('ALREADY_READ_KEY'))
+
+      tenant.messages.map(message => {
+        if (!readKeys.includes(message.id)) {
+          unread = true
+        }
+      })
       return unread
     }
   }

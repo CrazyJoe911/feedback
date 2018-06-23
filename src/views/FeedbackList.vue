@@ -22,7 +22,7 @@
         >
           <div class='profile'>
             <span :class="['avatar', `${message.person}`]">
-              <i v-if="message.read===false" class='unread'/>
+              <i v-if="isRead(message)" class='unread'/>
             </span>
             <span class='name'>
                   <span class='sentby'>
@@ -73,6 +73,10 @@ export default {
     activeTenant: {
       type: Array,
       default: () => []
+    },
+    readOneMessage: {
+      type: Function,
+      default: () => {}
     }
   },
   data () {
@@ -109,7 +113,13 @@ export default {
       this.activeNames = []
     },
     readMessage (message) {
-      message.read = true
+      const readKeys = JSON.parse(localStorage.getItem('ALREADY_READ_KEY'))
+      if (!readKeys.includes(message.id)) {
+        readKeys.push(message.id)
+        localStorage.setItem('ALREADY_READ_KEY', JSON.stringify(readKeys))
+        this.readOneMessage()
+        this.$forceUpdate()
+      }
     },
     highlight(words, keys) {
       let newstr = words
@@ -118,6 +128,10 @@ export default {
         newstr = newstr.replace(reg, `<span class=${fontColorsCls[Math.floor(Math.random() * 5)]}>$1</span>`)
       })
       return newstr
+    },
+    isRead(message) {
+      const readKeys = JSON.parse(localStorage.getItem('ALREADY_READ_KEY'))
+      return !readKeys.includes(message.id)
     }
   },
   watch: {

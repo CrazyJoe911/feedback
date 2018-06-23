@@ -3,10 +3,12 @@
     <div class='header'>Exchange Square</div>
     <div class='content'>
       <div class='building-overview'>
-        <BuildingInfo :activeFloorIndex="getActiveFloorIndex" :floorsData="activeFloorData" :getActiveTenant="getActiveTenant" />
+        <BuildingInfo :activeFloorIndex="getActiveFloorIndex" :floorsData="activeFloorData" 
+          :getActiveTenant="getActiveTenant" :timestamp="timestamp"/>
       </div>
       <div class='feedbacklist-overview'>
         <FeedbackList v-for="floor in activeFloorData" :floorData="floor"
+          :readOneMessage="refreshPage"
           :key="floor.floorNumber"
           :activeTenant="activeTenant"
         />
@@ -40,7 +42,8 @@ export default {
     return {
       activeFloorIndex: -1,
       activeTenant: [],
-      buildingData: []
+      buildingData: [],
+      timestamp: new Date
     }
   },
   computed: {
@@ -62,30 +65,39 @@ export default {
     },
     getActiveTenant (tenant) {
       this.activeTenant = [tenant.name]
+    },
+    async getAllMessages() {
+      const result = await mailsRequest.getParsedMessages()
+      return this.formatData(result)
+    },
+    formatData(result) {
+      const formatData = []
+      for (let floor in result) {
+        const floorInfo = result[floor]
+        const tenants = []
+        for (let tenant in floorInfo) {
+          tenants.push({
+            tenantNumber: tenant,
+            ...floorInfo[tenant]
+          })
+        }
+        formatData.push({
+          name: floor,
+          floorNumber: floor,
+          tenants
+        })
+      }
+      return formatData.reverse()
+    },
+    refreshPage() {
+      this.timestamp = new Date()
     }
   },
   async mounted () {
-    const result = await mailsRequest.getParsedMessages()
-    const formatData = []
-
-    for (let floor in result) {
-      const floorInfo = result[floor]
-      const tenants = []
-      for (let tenant in floorInfo) {
-        tenants.push({
-          tenantNumber: tenant,
-          ...floorInfo[tenant]
-        })
-      }
-      formatData.push({
-        name: floor,
-        floorNumber: floor,
-        tenants
-      })
-    }
-
-    console.log(formatData)
-    this.buildingData = formatData.reverse()
+    this.buildingData = await this.getAllMessages()
+    // setInterval(() => {
+    //   this.getAllMessages()
+    // }, 3000)
   }
 }
 </script>
