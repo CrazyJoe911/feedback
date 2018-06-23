@@ -1,5 +1,5 @@
 <template>
-  <div id='pie' style="width: 100%; height: 100%;"></div>
+  <div id='bar-ration' style="width: 100%; height: 100%;"></div>
 </template>
 
 <script>
@@ -83,29 +83,29 @@ export default {
           center: ['50%', '50%'],
           data: [
             {
-              value: (this.tenantKeywords[0].count + 1) * 60,
+              value: (this.tenantKeywords[0].count + 1) * 100,
               name: '5 Star',
-              tooltip: this.tenantKeywords[0].keysets.slice(0, 3).join(', ') || 'No Data Found'
+              tooltip: this.tenantKeywords[0].keysets.join(', ') || 'No Data Found'
             },
             {
-              value: (this.tenantKeywords[1].count + 1) * 60,
+              value: (this.tenantKeywords[1].count + 1) * 100,
               name: '4 Star',
-              tooltip: this.tenantKeywords[1].keysets.slice(0, 3).join(', ') || 'No Data Found'
+              tooltip: this.tenantKeywords[1].keysets.join(', ') || 'No Data Found'
             },
             {
-              value: (this.tenantKeywords[2].count + 1) * 60,
+              value: (this.tenantKeywords[2].count + 1) * 100,
               name: '3 Star',
-              tooltip: this.tenantKeywords[2].keysets.slice(0, 3).join(', ') || 'No Data Found'
+              tooltip: this.tenantKeywords[2].keysets.join(', ') || 'No Data Found'
             },
             {
-              value: (this.tenantKeywords[3].count + 1) * 60,
+              value: (this.tenantKeywords[3].count + 1) * 100,
               name: '2 Star',
-              tooltip: this.tenantKeywords[3].keysets.slice(0, 3).join(', ') || 'No Data Found'
+              tooltip: this.tenantKeywords[3].keysets.join(', ') || 'No Data Found'
             },
             {
-              value: (this.tenantKeywords[4].count + 1) * 60,
+              value: (this.tenantKeywords[4].count + 1) * 100,
               name: '1 Star',
-              tooltip: this.tenantKeywords[4].keysets.slice(0, 3).join(', ') || 'No Data Found'
+              tooltip: this.tenantKeywords[4].keysets.join(', ') || 'No Data Found'
             }
           ].sort(function (a, b) { return a.value - b.value }),
           roseType: 'radius',

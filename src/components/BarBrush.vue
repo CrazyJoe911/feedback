@@ -1,5 +1,5 @@
 <template>
-  <div id='line-stack' style="width: 100%; height: 100%;"></div>
+  <div id='bar-brush' style="width: 100%; height: 100%;"></div>
 </template>
 
 <script>
@@ -86,7 +86,7 @@ export default {
         left: 10
       },
       brush: {
-        toolbox: ['rect', 'polygon', 'lineX', 'lineY', 'keep', 'clear'],
+        toolbox: ['rect', 'polygon', 'clear'],
         xAxisIndex: 0
       },
       toolbox: {
@@ -113,29 +113,6 @@ export default {
       },
       grid: {
         left: 100
-      },
-      visualMap: {
-        type: 'continuous',
-        dimension: 1,
-        text: ['High', 'Low'],
-        inverse: true,
-        itemHeight: 200,
-        calculable: true,
-        min: -2,
-        max: 10,
-        top: 60,
-        left: 10,
-        inRange: {
-          colorLightness: [0.4, 0.8]
-        },
-        outOfRange: {
-          color: '#bbb'
-        },
-        controller: {
-          inRange: {
-            color: '#2f4554'
-          }
-        }
       },
       series: [
         {
@@ -177,7 +154,7 @@ export default {
     }
 
     // 基于准备好的dom，初始化echarts实例
-    this.myChart = echarts.init(document.getElementById('line-stack'))
+    this.myChart = echarts.init(document.getElementById('bar-brush'))
     this.myChart.on('brushSelected', this.renderBrushed)
     // 绘制图表
     this.myChart.setOption(option)

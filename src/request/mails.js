@@ -1,7 +1,7 @@
 import axios from 'axios'
 import deep from 'deep-get-set'
 
-const SERVER_ADDR = 'http://localhost:3000'
+const SERVER_ADDR = 'http://10.2.12.201:3000'
 
 async function getLineStackData (from, start, end, interval = 10) {
   const result = await axios.get(`${SERVER_ADDR}/messages/line-stack`, {

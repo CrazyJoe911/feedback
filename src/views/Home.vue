@@ -12,19 +12,29 @@
         />
       </div>
     </div>
-
+    <div class='charts'>
+      <BarBrush class='chart'/>
+      <Pie class='chart'/>
+      <LineStack class='chart'/>
+    </div>
   </div>
 </template>
 <script>
 import BuildingInfo from './BuildingInfo'
 import FeedbackList from './FeedbackList'
+import BarBrush from '../components/BarBrush'
+import Pie from '../components/Pie'
+import LineStack from '../components/LineStack'
 import * as mailsRequest from '../request/mails'
 
 export default {
   name: 'Home',
   components: {
     BuildingInfo,
-    FeedbackList
+    FeedbackList,
+    BarBrush,
+    Pie,
+    LineStack
   },
   data () {
     return {
@@ -258,6 +268,13 @@ export default {
       text-align: center;
       font-weight: bold;
       width: 150px;
+    }
+  }
+  .charts {
+    height: 200px;
+    display: flex;
+    .chart {
+      flex: 1;
     }
   }
 }
