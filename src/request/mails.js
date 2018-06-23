@@ -62,6 +62,12 @@ async function getParsedMessages () {
       }
     )
   })
+  Object.values(result).forEach(floor => {
+    Object.values(floor).forEach(tenant => {
+      tenant.averageStar =
+        (tenant.messages.reduce((total, rec) => total + rec.star, 0))/(tenant.messages.length || 1)
+    })
+  })
   return result
 }
 
