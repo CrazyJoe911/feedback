@@ -12,9 +12,11 @@ export default {
     return {
       tenantEmails: [
         '373382617@qq.com',
-        'zhugino@gmail.com'
+        'zhugino@gmail.com',
+        'jim.zhan@me.com',
+        'jim@funbox.me'
       ],
-      startTime: new Date(2018, 4, 22),
+      startTime: new Date(2018, 5, 22),
       endTime: new Date(),
       interval: 10
     }
@@ -57,7 +59,7 @@ export default {
 
     const series = this.tenantFramedEmails.map(rec => {
       return {
-        name: rec.from,
+        name: rec.name,
         type: 'line',
         stack: '总量',
         data: rec.framedEmails.map(mails => mails.result)
@@ -65,7 +67,7 @@ export default {
     })
     let option = {
       title: {
-        text: '折线图堆叠'
+        text: 'Feedback Counts'
       },
       tooltip: {
         trigger: 'axis'

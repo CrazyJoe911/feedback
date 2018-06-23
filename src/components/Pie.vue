@@ -84,27 +84,27 @@ export default {
           center: ['50%', '50%'],
           data: [
             {
-              value: (this.tenantKeywords[0].count + 1) * 20,
+              value: (this.tenantKeywords[0].count + 1) * 6,
               name: '5 Star',
               tooltip: this.tenantKeywords[0].keysets.slice(0, 3).join(', ') || 'No Data Found'
             },
             {
-              value: (this.tenantKeywords[1].count + 1) * 20,
+              value: (this.tenantKeywords[1].count + 1) * 6,
               name: '4 Star',
               tooltip: this.tenantKeywords[1].keysets.slice(0, 3).join(', ') || 'No Data Found'
             },
             {
-              value: (this.tenantKeywords[2].count + 1) * 20,
+              value: (this.tenantKeywords[2].count + 1) * 6,
               name: '3 Star',
               tooltip: this.tenantKeywords[2].keysets.slice(0, 3).join(', ') || 'No Data Found'
             },
             {
-              value: (this.tenantKeywords[3].count + 1) * 20,
+              value: (this.tenantKeywords[3].count + 1) * 6,
               name: '2 Star',
               tooltip: this.tenantKeywords[3].keysets.slice(0, 3).join(', ') || 'No Data Found'
             },
             {
-              value: (this.tenantKeywords[4].count + 1) * 20,
+              value: (this.tenantKeywords[4].count + 1) * 6,
               name: '1 Star',
               tooltip: this.tenantKeywords[4].keysets.slice(0, 3).join(', ') || 'No Data Found'
             }

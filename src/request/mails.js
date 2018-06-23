@@ -64,7 +64,7 @@ async function getParsedMessages () {
         messages: []
       })
     }
-    result[message.floor][message.unit].messages.push(
+    result[message.floor][message.unit].messages.unshift(
       {
         id: message._id,
         content: message.content,
