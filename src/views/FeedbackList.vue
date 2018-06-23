@@ -61,7 +61,7 @@ export default {
   props: {
     floorData: {
       type: Object,
-      default: () =>{},
+      default: () => {},
       required: true
     },
     activeTenant: {

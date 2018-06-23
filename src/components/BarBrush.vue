@@ -85,17 +85,12 @@ export default {
         align: 'left',
         left: 10
       },
-      brush: {
-        toolbox: ['rect', 'polygon', 'clear'],
-        xAxisIndex: 0
-      },
+      // brush: {
+      //   toolbox: [],
+      //   xAxisIndex: 0
+      // },
       toolbox: {
-        feature: {
-          magicType: {
-            type: ['stack', 'tiled']
-          },
-          dataView: {}
-        }
+        feature: { }
       },
       tooltip: {},
       xAxis: {
@@ -155,7 +150,7 @@ export default {
 
     // 基于准备好的dom，初始化echarts实例
     this.myChart = echarts.init(document.getElementById('bar-brush'))
-    this.myChart.on('brushSelected', this.renderBrushed)
+    // this.myChart.on('brushSelected', this.renderBrushed)
     // 绘制图表
     this.myChart.setOption(option)
   }
