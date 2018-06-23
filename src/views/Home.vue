@@ -18,6 +18,7 @@
 <script>
 import BuildingInfo from './BuildingInfo'
 import FeedbackList from './FeedbackList'
+import * as mailsRequest from '../request/mails'
 
 export default {
   name: 'Home',
@@ -207,6 +208,10 @@ export default {
     getActiveTenant (tenant) {
       this.activeTenant = [tenant.name]
     }
+  },
+  async mounted () {
+    const result = await mailsRequest.getParsedMessages()
+    console.log(result)
   }
 }
 </script>
