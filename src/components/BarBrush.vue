@@ -79,7 +79,7 @@ export default {
     }
 
     let option = {
-      backgroundColor: '#eee',
+      backgroundColor: '#fbfbfb',
       legend: {
         data: ['1 Star', '2 Stars', '3 Stars', '4 Stars', '5 Stars'],
         align: 'left',
