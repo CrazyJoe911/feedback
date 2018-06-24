@@ -79,12 +79,17 @@ export default {
     }
 
     let option = {
-      backgroundColor: '#fbfbfb',
-      legend: {
-        data: ['1 Star', '2 Stars', '3 Stars', '4 Stars', '5 Stars'],
-        align: 'left',
-        left: 10
+      title: {
+        text: 'Tenant Feedback Bar',
+        left: 'center',
+        top: 5,
+        textStyle: {
+          color: '#555',
+          fontSize: '18px',
+          fontWeight: 1000
+        }
       },
+      backgroundColor: '#fbfbfb',
       // brush: {
       //   toolbox: [],
       //   xAxisIndex: 0

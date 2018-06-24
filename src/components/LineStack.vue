@@ -74,7 +74,7 @@ export default {
         textStyle: {
           color: '#555',
           fontSize: '18px',
-          fontWeight: 'bold'
+          fontWeight: 1000
         }
       },
       tooltip: {
@@ -83,7 +83,8 @@ export default {
       grid: {
         left: '3%',
         right: '4%',
-        bottom: '3%',
+        top: '20%',
+        bottom: '15%',
         containLabel: true
       },
       toolbox: {
