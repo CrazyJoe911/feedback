@@ -51,7 +51,7 @@ export default {
     await this.refreshPie()
 
     let option = {
-      backgroundColor: '#fefefe',
+      backgroundColor: '#fbfbfb',
 
       title: {
         text: 'Tenant Satisfaction Pie',
@@ -59,7 +59,8 @@ export default {
         top: 5,
         textStyle: {
           color: '#555',
-          fontSize: '8px'
+          fontSize: '18px',
+          fontWeight: 'bold'
         }
       },
 
@@ -73,7 +74,7 @@ export default {
         min: 3,
         max: 25,
         inRange: {
-          colorLightness: [0, 1]
+          colorLightness: [0, 1.8]
         }
       },
       series: [
@@ -113,14 +114,18 @@ export default {
           label: {
             normal: {
               textStyle: {
-                color: 'rgba(100, 100, 100, 0.3)'
+                color: 'rgba(100, 100, 100, 0.8)',
+                fontSize: '12px',
+                fontWeight: 'bolder'
               }
             }
           },
           labelLine: {
             normal: {
               lineStyle: {
-                color: 'rgba(100, 100, 100, 0.3)'
+                color: 'rgba(100, 100, 100, 0.8)',
+                fontSize: '12px',
+                fontWeight: 'bolder'
               },
               smooth: 0.2,
               length: 10,
@@ -129,9 +134,9 @@ export default {
           },
           itemStyle: {
             normal: {
-              color: '#88ffee',
-              shadowBlur: 250,
-              shadowColor: 'rgba(0, 0, 0, 0.5)'
+              color: '#DFF1D8',
+              // shadowBlur: 250,
+              // shadowColor: 'rgba(0, 0, 0, 0.5)'
             }
           },
 

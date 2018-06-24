@@ -68,7 +68,14 @@ export default {
     let option = {
       backgroundColor: '#fbfbfb',
       title: {
-        text: 'Feedback Counts'
+        text: 'Feedback Counts',
+        left: 'center',
+        top: 5,
+        textStyle: {
+          color: '#555',
+          fontSize: '18px',
+          fontWeight: 'bold'
+        }
       },
       tooltip: {
         trigger: 'axis'
