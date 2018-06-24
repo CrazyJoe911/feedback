@@ -41,7 +41,7 @@ export default {
 
       this.myChart.setOption({
         title: {
-          backgroundColor: '#333',
+          backgroundColor: '#f8f8f8',
           text: 'SELECTED DATA INDICES: \n' + brushed.join('\n'),
           bottom: 0,
           right: 0,
@@ -66,6 +66,7 @@ export default {
       }
     })
     let option = {
+      backgroundColor: '#fbfbfb',
       title: {
         text: 'Feedback Counts'
       },

@@ -51,14 +51,14 @@ export default {
     await this.refreshPie()
 
     let option = {
-      backgroundColor: '#2c343c',
+      backgroundColor: '#fefefe',
 
       title: {
         text: 'Tenant Satisfaction Pie',
         left: 'center',
         top: 5,
         textStyle: {
-          color: '#ccc',
+          color: '#555',
           fontSize: '8px'
         }
       },
@@ -70,8 +70,8 @@ export default {
 
       visualMap: {
         show: false,
-        min: 30,
-        max: 60,
+        min: 3,
+        max: 25,
         inRange: {
           colorLightness: [0, 1]
         }
@@ -84,27 +84,27 @@ export default {
           center: ['50%', '50%'],
           data: [
             {
-              value: (this.tenantKeywords[0].count + 1) * 6,
+              value: (this.tenantKeywords[0].count + 1),
               name: '5 Star',
               tooltip: this.tenantKeywords[0].keysets.slice(0, 3).join(', ') || 'No Data Found'
             },
             {
-              value: (this.tenantKeywords[1].count + 1) * 6,
+              value: (this.tenantKeywords[1].count + 1),
               name: '4 Star',
               tooltip: this.tenantKeywords[1].keysets.slice(0, 3).join(', ') || 'No Data Found'
             },
             {
-              value: (this.tenantKeywords[2].count + 1) * 6,
+              value: (this.tenantKeywords[2].count + 1),
               name: '3 Star',
               tooltip: this.tenantKeywords[2].keysets.slice(0, 3).join(', ') || 'No Data Found'
             },
             {
-              value: (this.tenantKeywords[3].count + 1) * 6,
+              value: (this.tenantKeywords[3].count + 1),
               name: '2 Star',
               tooltip: this.tenantKeywords[3].keysets.slice(0, 3).join(', ') || 'No Data Found'
             },
             {
-              value: (this.tenantKeywords[4].count + 1) * 6,
+              value: (this.tenantKeywords[4].count + 1),
               name: '1 Star',
               tooltip: this.tenantKeywords[4].keysets.slice(0, 3).join(', ') || 'No Data Found'
             }
@@ -113,14 +113,14 @@ export default {
           label: {
             normal: {
               textStyle: {
-                color: 'rgba(255, 255, 255, 0.3)'
+                color: 'rgba(100, 100, 100, 0.3)'
               }
             }
           },
           labelLine: {
             normal: {
               lineStyle: {
-                color: 'rgba(255, 255, 255, 0.3)'
+                color: 'rgba(100, 100, 100, 0.3)'
               },
               smooth: 0.2,
               length: 10,
@@ -129,8 +129,8 @@ export default {
           },
           itemStyle: {
             normal: {
-              color: '#c23531',
-              shadowBlur: 200,
+              color: '#88ffee',
+              shadowBlur: 250,
               shadowColor: 'rgba(0, 0, 0, 0.5)'
             }
           },
