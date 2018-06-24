@@ -1,12 +1,14 @@
 <template>
   <div class='building-info'>
     <p @click="showAll">{{ this.choosedIndex !== -1 ? 'ShowALL' : 'ALL'}}</p>
-    <div class='imgs'>
+    <div class='imgs' @mouseout="showBright">
       <transition-group name="fade" tag='div'>
         <div v-for="(floor, index) in floorsData"
-          v-show="choosedIndex === -1 || choosedIndex === parseInt(floor.floorNumber)" :class="[`floor${parseInt(floor.floorNumber)}`, imgAnimationCls(parseInt(floor.floorNumber))]"
+          v-show="choosedIndex === -1 || choosedIndex === parseInt(floor.floorNumber)" 
+          :class="[`floor${parseInt(floor.floorNumber)}`, imgAnimationCls(parseInt(floor.floorNumber)), {'mark' : !brightAll && brightNumber !== floor.floorNumber}]"
           :style="getStyle(index, floor)"
           :key="index + 'floors' + floor.name"
+          @mouseover="mouseover(floor.floorNumber)"
           @click="chooseImg(floor.floorNumber)"
           >
           <div v-show="choosedIndex !== -1"
@@ -21,6 +23,8 @@
 </template>
 
 <script>
+import eventBus from '../eventBus'
+
 export default {
   name: 'BuildingInfo',
   props: {
@@ -43,7 +47,9 @@ export default {
   },
   data () {
     return ({
-      choosedIndex: -1
+      choosedIndex: -1,
+      brightNumber: '',
+      brightAll: true
     })
   },
   watch: {
@@ -62,15 +68,12 @@ export default {
     chooseImg (floorNumber) {
       this.choosedIndex = parseInt(floorNumber)
       this.activeFloorIndex(this.choosedIndex)
-      console.log('choosedIndex', this.choosedIndex)
     },
     imgAnimationCls (floorNumber) {
       let cls = ''
       if (this.choosedIndex !== -1) {
         cls = this.choosedIndex === parseInt(floorNumber) ? 'choosed' : this.choosedIndex < parseInt(floorNumber) ? 'fadeOutDown' : 'fadeOutUp'
       }
-      console.log('floorNumber', floorNumber)
-      console.log('cls', cls)
       return cls
     },
     showAll () {
@@ -90,6 +93,13 @@ export default {
         }
       })
       return unread
+    },
+    mouseover(number) {
+      this.brightAll = false
+      this.brightNumber = number
+    },
+    showBright() {
+      this.brightAll = true
     }
   }
 }
@@ -113,6 +123,9 @@ export default {
       width: 100%;
       text-align: left;
       font-size: 20px;
+    }
+    .mark {
+      opacity: 0.3;
     }
     .imgs {
       height: 100%;
