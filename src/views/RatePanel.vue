@@ -1,7 +1,7 @@
 
 <template>
   <div class='rate-panel'>
-    <el-rate v-model="scores" disabled :colors="['#99A9BF', '#F7BA2A', '#FF9900']"></el-rate>
+    <el-rate v-model="scores" disabled :colors="['#FF9900', '#FF9900', '#FF9900']"></el-rate>
   </div>
 </template>
 <script>

@@ -56,7 +56,7 @@ export default {
       const calcIndex = index
       return {
         zIndex: parseInt(floor.floorNumber),
-        marginTop: calcIndex * 130 + 'px'
+        marginTop: calcIndex * 150 + 'px'
       }
     },
     chooseImg (floorNumber) {
@@ -109,6 +109,11 @@ export default {
       color: blue;
       cursor: pointer;
     }
+    p {
+      width: 100%;
+      text-align: left;
+      font-size: 20px;
+    }
     .imgs {
       height: 100%;
       position: relative;
@@ -139,7 +144,7 @@ export default {
       }
       .choosed {
         height: 500px;
-        margin: 50px !important;
+        margin-top: 50px !important;
         display: flex;
         align-items: center;
         &:hover {
