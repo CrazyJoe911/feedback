@@ -3,6 +3,17 @@ import deep from 'deep-get-set'
 
 const SERVER_ADDR = 'http://10.2.12.201:3000'
 
+function initLocalStorage (results) {
+  const alreadyReadKeys = localStorage.getItem('ALREADY_READ_KEY')
+  if (!alreadyReadKeys) {
+    const ids = []
+    results.map(result => {
+      ids.push(result._id)
+    })
+    localStorage.setItem('ALREADY_READ_KEY', JSON.stringify(ids))
+  }
+}
+
 async function getLineStackData (from, start, end, interval = 10) {
   const result = await axios.get(`${SERVER_ADDR}/messages/line-stack`, {
     params: {
@@ -40,7 +51,7 @@ async function getPieData (from) {
 async function getParsedMessages () {
   const response = await axios.get(`${SERVER_ADDR}/messages`)
   const messages = response.data
-
+  initLocalStorage(messages)
   const result = {
     '1F': {},
     '2F': {},

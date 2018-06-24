@@ -22,7 +22,7 @@
         >
           <div class='profile'>
             <span :class="['avatar', `${message.person}`]">
-              <i v-if="message.read===false" class='unread'/>
+              <i v-if="isRead(message)" class='unread'/>
             </span>
             <span class='name'>
                   <span class='sentby'>
@@ -41,7 +41,7 @@
                   <span class='small'></span>
             <span class='big'></span>
             </span>
-            <span class='message-content'>{{ message.content }}</span>
+            <span class='message-content' v-html="highlight(message.content, message.keywords)"></span>
           </div>
         </div>
       </el-collapse-item>
@@ -52,7 +52,13 @@
 <script>
 import RatePanel from './RatePanel'
 const moment = require('moment')
-
+const fontColorsCls = [
+  'highlight-blue',
+  'highlight-green',
+  'highlight-yellow',
+  'highlight-orange',
+  'highlight-red'
+]
 export default {
   name: 'FeedbackList',
   components: {
@@ -67,6 +73,10 @@ export default {
     activeTenant: {
       type: Array,
       default: () => []
+    },
+    readOneMessage: {
+      type: Function,
+      default: () => {}
     }
   },
   data () {
@@ -103,7 +113,25 @@ export default {
       this.activeNames = []
     },
     readMessage (message) {
-      message.read = true
+      const readKeys = JSON.parse(localStorage.getItem('ALREADY_READ_KEY'))
+      if (!readKeys.includes(message.id)) {
+        readKeys.push(message.id)
+        localStorage.setItem('ALREADY_READ_KEY', JSON.stringify(readKeys))
+        this.readOneMessage()
+        this.$forceUpdate()
+      }
+    },
+    highlight (words, keys) {
+      let newstr = words
+      keys.map(key => {
+        const reg = new RegExp('(' + key.name + ')', 'g')
+        newstr = newstr.replace(reg, `<span class=${fontColorsCls[Math.floor(Math.random() * 5)]}>$1</span>`)
+      })
+      return newstr
+    },
+    isRead (message) {
+      const readKeys = JSON.parse(localStorage.getItem('ALREADY_READ_KEY'))
+      return !readKeys.includes(message.id)
     }
   },
   watch: {
@@ -120,7 +148,30 @@ export default {
     margin-bottom: 20px;
     $logo-size: 45px;
     $face-size: 60px;
-
+    .highlight-font {
+      padding: 0 5px;
+      border-radius: 5px
+    }
+    .highlight-blue {
+      @extend .highlight-font;
+      background: #D8E2F3;
+    }
+    .highlight-green {
+      @extend .highlight-font;
+      background: #E7EFD1;
+    }
+    .highlight-yellow {
+      @extend .highlight-font;
+      background: #FDF3C8;
+    }
+    .highlight-orange {
+      @extend .highlight-font;
+      background: #FFE9D3;
+    }
+    .highlight-red {
+      @extend .highlight-font;
+      background: #ED880B;
+    }
     .angry-face {
       background: url('../assets/emotion/1.svg') center center no-repeat
     }

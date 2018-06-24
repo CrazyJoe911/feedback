@@ -35,6 +35,10 @@ export default {
     getActiveTenant: {
       type: Function,
       default: () => {}
+    },
+    timestamp: {
+      type: [Date, String],
+      default: ''
     }
   },
   data () {
@@ -42,12 +46,17 @@ export default {
       choosedIndex: -1
     })
   },
+  watch: {
+    timestamp () {
+      this.$forceUpdate()
+    }
+  },
   methods: {
     getStyle (index, floor) {
       const calcIndex = index
       return {
         zIndex: parseInt(floor.floorNumber),
-        marginTop: calcIndex * 100 + 'px'
+        marginTop: calcIndex * 130 + 'px'
       }
     },
     chooseImg (floorNumber) {
@@ -73,11 +82,13 @@ export default {
     },
     hasUnreadMessage (tenant) {
       let unread = false
-      // tenant.messages.map(message => {
-      //   if (message.read === false) {
-      //     unread = true
-      //   }
-      // })
+      const readKeys = JSON.parse(localStorage.getItem('ALREADY_READ_KEY'))
+
+      tenant.messages.map(message => {
+        if (!readKeys.includes(message.id)) {
+          unread = true
+        }
+      })
       return unread
     }
   }
@@ -128,7 +139,7 @@ export default {
       }
       .choosed {
         height: 500px;
-        margin: 0px !important;
+        margin: 50px !important;
         display: flex;
         align-items: center;
         &:hover {
