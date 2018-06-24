@@ -60,7 +60,7 @@ export default {
         textStyle: {
           color: '#555',
           fontSize: '18px',
-          fontWeight: 'bold'
+          fontWeight: 1000
         }
       },
 
@@ -116,7 +116,7 @@ export default {
               textStyle: {
                 color: 'rgba(100, 100, 100, 0.8)',
                 fontSize: '12px',
-                fontWeight: 'bolder'
+                fontWeight: 1000
               }
             }
           },
@@ -125,7 +125,7 @@ export default {
               lineStyle: {
                 color: 'rgba(100, 100, 100, 0.8)',
                 fontSize: '12px',
-                fontWeight: 'bolder'
+                fontWeight: 1000
               },
               smooth: 0.2,
               length: 10,
